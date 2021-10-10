@@ -1,3 +1,6 @@
+import yfinance as yf
+from datetime import date
+
 class StockProfitCalculator: 
     def getProceeds(self, allotment: int, finalPrice: int) -> int: 
         return allotment * finalPrice
@@ -44,6 +47,25 @@ class StockProfitCalculator:
         print("Return on Investment: ", profit_report[3])
         print("To break even, you should have a final share price of ", profit_report[4])
 
+    def stockAPI(self, stockCode: str):
+        try: 
+            code = yf.Ticker(stockCode)
+            info = code.info
+            print('\n')
+            print(date.today().strftime("%a %b %d %I:%M:%S %Z%Y"))
+            print("{} ({})".format(info['longName'],stockCode.upper()))
+            price = info['regularMarketPrice']
+            valueChange = info['regularMarketPrice'] - info['previousClose']
+            percentChange = valueChange / info['previousClose'] * 100
+            print(f'{price} {valueChange:.2f} ({percentChange:.2f}%)')
+
+        except KeyError: 
+            print("Connection error!")
+
+        except Exception:
+            print("Invalid stock code, please try again.")
+
+        
 if __name__ == "__main__": 
     tickerSymbol = "ADBE"
     allotment = 100
@@ -54,4 +76,10 @@ if __name__ == "__main__":
     taxRate = 15
 
     c = StockProfitCalculator()
-    c.calculateStockProfit(tickerSymbol, allotment, finalPrice, sellCommission, initialPrice, buyCommission, taxRate)
+    # hw 1
+    # c.calculateStockProfit(tickerSymbol, allotment, finalPrice, sellCommission, initialPrice, buyCommission, taxRate)
+
+    # hw 2
+    c.stockAPI("ADBE")
+    c.stockAPI("MSFT")
+    c.stockAPI("AAPL")

@@ -6,4 +6,4 @@ Execute the script:
 python3 main.py
 ```
 
-![](cmpe285hw1_output.gif)
+![](cmpe285hw2_output.gif)
