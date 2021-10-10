@@ -1,4 +1,4 @@
-# CMPE 285: Homework 1
+# CMPE 285: Homework 2
 The goal of this homework is to use Python API that allows you to retrieve financial data based on the stock code and return its value and percent changes.
 
 Dependencies: 
