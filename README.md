@@ -5,7 +5,7 @@ Dependencies:
 ```
 pip3 install numpy --no-cache-dir
 pip3 install pandas --no-cache-dir
-$ pip install yfinance --upgrade --no-cache-dir
+pip3 install yfinance --upgrade --no-cache-dir
 ```
 
 Script execution: 
